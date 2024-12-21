@@ -18,8 +18,8 @@ This coding challenge involves creating a chatbot that helps users via CBT techn
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/nicovaras/clare.git
+   cd clare
    ```
 
 2. Set up environment variables:
