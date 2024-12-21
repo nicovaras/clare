@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  streamlit-app:
+    build:
+      context: ./streamlit
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - BASE_URL=http://node-app:3000/api
+    volumes:
+      - ./streamlit/app.py:/usr/src/app/app.py
+    depends_on:
+      - node-app
+
+volumes:
+  redis-data:
