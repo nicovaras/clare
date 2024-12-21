@@ -7,7 +7,7 @@ This coding challenge involves creating a chatbot that helps users via CBT techn
 ### Prerequisites
 
 - **Docker**: Ensure Docker is installed on your system.
-- If running locally (optional), install these dependencies:
+- Maybe you'll need to install these dependencies:
   ```bash
   npm install nodemon ts-node --save-dev
   ```
